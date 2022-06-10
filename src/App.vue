@@ -1,16 +1,13 @@
 <template>
-  
   <nav>
-    <router-link to="/">Main</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/set">SET</router-link>
+    <router-view to="/"></router-view>
   </nav>
-  <router-view/>
-
 </template>
 
 <script>
-
+export default {
+  name: 'App'
+}
 </script>
 
 

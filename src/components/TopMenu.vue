@@ -1,14 +1,16 @@
 <template>
 <div class = "topmenu">
     <h3>
-      <a href = "https://epimint.com/index.html">
+      <router-link to="/">
       <img src="../assets/epimint.jpg" art="에피민트" class="homeblack">
       <img src="../assets/epimintWhite.jpg" art="에피민트" class="homewhite">
-      </a>
+      </router-link>   <!-- 홈 링크 --> 
+      <router-view/>
     </h3>
     <ul class = "leftmenu">
         <li>
-         <a href = "https://epimint.com/index.html">SET</a>
+           <router-link to="/set">SET</router-link>
+            <router-view/>
         </li>
         <li>
           <a href = "https://epimint.com/index.html">FLAVOR</a>
@@ -35,11 +37,10 @@
 </template>
     
 <script setup lang='ts'>
-    
 </script>
     
 <style>
-    .homeblack:hover{ /* epimint 제목 누르면 연하게 호버됨*/
+.homeblack:hover{ /* epimint 제목 누르면 연하게 호버됨*/
   opacity : 0.75
 }
 .homewhite{ /* epimint사진 하얀색 글씨*/
