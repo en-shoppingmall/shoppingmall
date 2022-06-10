@@ -1,13 +1,13 @@
 <template>
-<div class = "topmenu">
-    <h3>
+<div class = "top-menu">
+    <h3 class = "top-head">
       <router-link to="/">
-      <img src="../assets/epimint.jpg" art="에피민트" class="homeblack">
-      <img src="../assets/epimintWhite.jpg" art="에피민트" class="homewhite">
+      <img src="../assets/epimint.jpg" art="에피민트" class="home-black">
+      <img src="../assets/epimintWhite.jpg" art="에피민트" class="home-white">
       </router-link>   <!-- 홈 링크 --> 
       <router-view/>
     </h3>
-    <ul class = "leftmenu">
+    <ul class = "top-left-menu">
         <li>
            <router-link to="/set">SET</router-link>
             <router-view/>
@@ -16,14 +16,15 @@
           <a href = "https://epimint.com/index.html">FLAVOR</a>
         </li>
         <li>
-          <a href = "https://epimint.com/index.html">EVENT</a>
+          <router-link to="/event">EVENT</router-link>   <!--이벤트 페이지 링크 --> 
+          <router-view/>
         </li>
         <li>
           <a href = "https://epimint.com/index.html">REVIEW</a>
         </li>
       </ul>
 
-    <div class = "rightmenu">
+    <div class = "right-menu">
       <ul>
         <li>
             <a href = "https://epimint.com/index.html">LOGIN</a>
@@ -36,60 +37,49 @@
   </div>
 </template>
     
-<script setup lang='ts'>
+<script>
+
 </script>
     
 <style>
-.homeblack:hover{ /* epimint 제목 누르면 연하게 호버됨*/
+.home-black:hover{ /* epimint 제목 누르면 연하게 호버됨*/
   opacity : 0.75
 }
-.homewhite{ /* epimint사진 하얀색 글씨*/
+.home-white{ /* epimint사진 하얀색 글씨*/
   display : none;
 }
-.topmenu{ /* 메뉴 + 로그인 회원가입 묶은 것 */
+.top-menu{ /* 메뉴 + 로그인 회원가입 묶은 것 */
   display : flex;
-  top : 20px;
   font-size : 25px;
-  align-items: center;
   position: fixed;
   width: 100%;
   z-index: 100;
 }
-.rightmenu{ /* 로그인 회원가입 설정*/
-  padding-right: 60px;
-  display: flex;
+.right-menu{ /* 로그인 회원가입 설정*/
+    padding-right: 60px;
+    display: flex;
   flex-flow: row-reverse;
   align-items: center;
   flex-grow: 1;
 }
-.eventBox { /* 가장 상단에 있는 이벤트 문구 박스*/
-    display: flex;
-    justify-content: center;     
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    z-index: 1000;
-    font-size: 25px;
-    background : rgb(51, 51, 51);
-}
-.leftmenu{ /* SET, FLAVOR, EVENT, REVIEW 메뉴들 설정*/
+.left-menu{ /* SET, FLAVOR, EVENT, REVIEW 메뉴들 설정*/
   display: block;
   list-style:none;
   margin-block-start: 2em;
   margin-block-end: 1em;
 }
-.leftmenu li{ /* 메뉴들 사이 간격 조정 */
+.top-left-menu li{ /* 메뉴들 사이 간격 조정 */
   padding-right: 40px;
 }
 body {
     margin: 0;
     padding: 0;
 }
-h3{ /* 메인페이지로 이동하는 epimint문구 링크*/
+.top-head{ /* 메인페이지로 이동하는 epimint문구 링크*/
     display: block;
     font-size: 2em;
-    margin-block-start: 1.5em;
-    margin-block-end: 0.67em;
+    margin-block-start: 0.9em;
+    margin-block-end: 0em;
     margin-inline-start: 30px;
     margin-inline-end: 0px;
     font-weight: bold;
@@ -102,7 +92,6 @@ ul{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
- 
 li{
     margin : 0;
     padding : 0;
@@ -122,4 +111,5 @@ a:-webkit-any-link { /*링크 위에 마우스 올렸을 때 커서 아이콘 �
 a:hover{ /* 링크 위에 마우스 올렸을 때 글씨 진하게 변경*/
   font-weight:bold;
 }
+
 </style>
