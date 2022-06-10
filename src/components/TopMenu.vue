@@ -1,6 +1,5 @@
 <template>
-     <div class = "topmenu">
-
+<div class = "topmenu">
     <h3>
       <a href = "https://epimint.com/index.html">
       <img src="../assets/epimint.jpg" art="에피민트" class="homeblack">

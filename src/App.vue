@@ -64,7 +64,9 @@ import TopMenu from './components/TopMenu.vue'
 
 
 export default {
-  components: { TopMenu },
+  components: { 
+    'top-menu' : TopMenu 
+    },
   name: 'App',
   data(){
     return{
