@@ -8,7 +8,7 @@
     </h3>
     <ul class = "leftmenu">
         <li>
-          <router-link to="/set">Set</router-link>
+         <a href = "https://epimint.com/index.html">SET</a>
         </li>
         <li>
           <a href = "https://epimint.com/index.html">FLAVOR</a>

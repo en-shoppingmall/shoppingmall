@@ -1,45 +1,16 @@
 <template>
-  <!--
+  
   <nav>
-    <router-link to="/">Home</router-link> |
+    <router-link to="/">Main</router-link> |
     <router-link to="/about">About</router-link>
+    <router-link to="/set">SET</router-link>
   </nav>
   <router-view/>
-  -->
-  <div>
 
-  <event-box></event-box> <!--위에 2개 구매시 추가 할인 이벤트 안내 문구-->
-  
-  <top-menu></top-menu> <!-- 상단 메뉴바 -->
- 
-  <div> <!-- 이 div는 중앙화면 Div임 그니까 밑에 footer를 중앙화면 div만들고 안에 넣으면 됨-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <bottom-menu></bottom-menu><!-- 이게 밑에 CONTACT 안내 문구임 -->
-  </div>
-</div>
 </template>
 
 <script>
-import EventBox from './components/EventBox.vue'
-import TopMenu from './components/TopMenu.vue'
-import BottomMenu from './components/BottomMenu.vue'
-export default {
-  components: { 
-    'event-box' : EventBox,
-    'top-menu' : TopMenu,
-    'bottom-menu' : BottomMenu
-    },
-  name: 'App'
-}
+
 </script>
 
 
