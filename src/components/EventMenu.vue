@@ -7,13 +7,7 @@
     </div>
 </template>
 
-<script>
-function getScrollPoistion() {
-        var ContainerElement = document.getElementById("ContentContainer");
-        var y = ContainerElement.scrollTop;
-        console.log(y); // scroll position from top
-      }
-      
+<script>      
 export default {
     data(){
     return{
@@ -24,6 +18,6 @@ export default {
 
 </script>
 
-<style>
+<style  scoped>
 
 </style>

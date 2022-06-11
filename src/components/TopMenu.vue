@@ -41,7 +41,7 @@
 
 </script>
     
-<style>
+<style  scoped>
 .home-black:hover{ /* epimint 제목 누르면 연하게 호버됨*/
   opacity : 0.75
 }
@@ -62,10 +62,10 @@
   align-items: center;
   flex-grow: 1;
 }
-.left-menu{ /* SET, FLAVOR, EVENT, REVIEW 메뉴들 설정*/
+.top-left-menu{ /* SET, FLAVOR, EVENT, REVIEW 메뉴들 설정*/
   display: block;
   list-style:none;
-  margin-block-start: 2em;
+  margin-block-start: 2.3em;
   margin-block-end: 1em;
 }
 .top-left-menu li{ /* 메뉴들 사이 간격 조정 */
