@@ -13,7 +13,8 @@
             <router-view/>
         </li>
         <li>
-          <a href = "https://epimint.com/index.html">FLAVOR</a>
+           <router-link to="/flavor">FLAVOR</router-link>
+            <router-view/>
         </li>
         <li>
           <router-link to="/event">EVENT</router-link>   <!--이벤트 페이지 링크 --> 

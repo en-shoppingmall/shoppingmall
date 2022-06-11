@@ -44,6 +44,12 @@ a{ /* 링크 밑줄 없애기, 색상 붙이기*/
   text-decoration: none;
   color: #333;
 }
+.service-center-top-box{
+    display: block;
+    list-style:none;
+    margin-block-start: 10em;
+    margin-inline-start: 2.2em;
+}
 .service-contact-box{
   color : black;
 }

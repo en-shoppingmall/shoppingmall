@@ -1,20 +1,7 @@
 <template>
     <div>
         <top-menu></top-menu> <!-- 상단 메뉴바 -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <set-menu></set-menu>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <bottom-menu></bottom-menu> <!-- 제일 하단 바 -->
     </div>
 </template>
