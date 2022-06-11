@@ -10,7 +10,7 @@
     <ul class = "top-left-menu">
         <li>
            <router-link to="/set">SET</router-link>
-            <router-view/>
+            <router-view />
         </li>
         <li>
            <router-link to="/flavor">FLAVOR</router-link>
@@ -28,7 +28,8 @@
     <div class = "right-menu">
       <ul>
         <li>
-            <a href = "https://epimint.com/index.html">LOGIN</a>
+            <router-link to="/login">LOGIN</router-link>   <!--로그인 페이지 링크--> 
+            <router-view/>
         </li>
         <li>
             <a href = "https://epimint.com/index.html">JOIN</a>
