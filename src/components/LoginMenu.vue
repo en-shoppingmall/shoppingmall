@@ -25,8 +25,8 @@
              <hr width = "100%" color = "gray"> <!-- 중간에 회색 실선 -->
 
              <div id = "member-login">
-                <input id = "id" type = "text" v-model = "idinput" placeholder="아이디">
-                <input id = "password" type = "password" v-model = "passwordinput" placeholder="비밀번호">
+                <input id = "id" type = "text" v-model = "loginid" placeholder="아이디">
+                <input id = "password" type = "password" v-model = "loginpw" placeholder="비밀번호">
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
                 <button type = "button" id = "login-button" @click = "userlist">기존 회원 로그인</button>
@@ -58,7 +58,7 @@ export default {
             userinfor : []
         }
     },
-    methods:{
+    methods:{      
         async userlist() {
         this.userinfor = await this.api(
         "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test",
@@ -80,7 +80,6 @@ export default {
     },
   },
 }
-
 </script>
 
 <style  scoped>
