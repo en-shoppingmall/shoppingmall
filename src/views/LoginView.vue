@@ -6,11 +6,13 @@
 
 <script>
 import LoginMenu from '../components/LoginMenu.vue'
+import axios from 'axios'
 
 export default {  
-    name: 'FLAVOR',
+    name: 'LOGIN',
     components: { 
     'login-menu' : LoginMenu
     }
+    
 }
 </script>

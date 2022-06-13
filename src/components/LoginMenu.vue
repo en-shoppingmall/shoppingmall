@@ -29,7 +29,10 @@
                 <input id = "password" type = "password" v-model = "passwordinput" placeholder="비밀번호">
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
-                <button type = "button" id = "login-button" @click = "GetData">기존 회원 로그인</button>
+                <button type = "button" id = "login-button" @click = "userlist">기존 회원 로그인</button>
+                <div class="de" v-for="(user, index) in userinfor" :key = "index">
+                    {{user.product_name }}</div><br><br><br><br><br>
+
             <div id = "search-join">
                 <a href = "https://epimint.com/index.html">아이디 찾기 | </a>
                 <a href = "https://epimint.com/index.html">비밀번호 찾기</a>
@@ -48,17 +51,34 @@
 </template>
 
 <script>      
+import axios from 'axios'
 export default {
     data(){
-    return{
-    
-    };
-  },
-    methods:{
-        GetData(){
-            alert(this.idinput) /* 아이디에 입력한 값 알람으로 뜨게 해줌*/
+    return {
+            userinfor : []
         }
-    }
+    },
+    methods:{
+        async userlist() {
+        this.userinfor = await this.api(
+        "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test",
+        "get",
+        {}
+      )
+      console.log(this.userinfor.id);
+    },
+    async api(url, method, data) {
+      return (
+        await axios({
+          method: method,
+          url: url,
+          data: data,
+        }).catch((e) => {
+          console.log(e);
+        })
+      ).data;
+    },
+  },
 }
 
 </script>
