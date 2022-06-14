@@ -29,7 +29,7 @@
                 <input id = "password" type = "password" v-model = "loginpw" placeholder="비밀번호">
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
-                <button type = "button" id = "login-button" @click = "userlist">기존 회원 로그인</button>
+                <button type = "button" id = "login-button" @click = "login">기존 회원 로그인</button>
             <div id = "search-join">
                 <a href = "https://epimint.com/index.html">아이디 찾기 | </a>
                 <a href = "https://epimint.com/index.html">비밀번호 찾기</a>
@@ -55,37 +55,28 @@ export default {
     return {
             loginid :'',
             loginpw :'',
-            userinfor : []
         }
-    },  
-        async userlist() {
-        this.userinfor = await this.api(
-        "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test",
-        "post",
-        {
-            "id" :this.loginid, "pw":this.loginpw
-        }
-      )
-     
     },
-    async api(url, method) {
-      return (
+
+    async login() { // 로그인 함수 
+        return (
         await axios({
-          url: url,
-          method: method,
+          url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
+          method: "post", // post 명령어 
           data: {"id" : this.loginid, "pw": this.loginpw}
-        }).then((res) => {
-            console.log(res)
-            alert("로그인에 성공했습니다.")
+
+        }).then((res) => { // 데이터 준 다음 받은 응답
+            console.log(res.status)
+            alert(this.loginid,"로그인에 성공했습니다.");
+            this.$router.push({name: 'main'})
         })
         .catch((e) => {
-          console.log(e)
+          alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
         })
       )
-    },
-  },
-  
+    }
 
+  }
 }
 </script>
 
