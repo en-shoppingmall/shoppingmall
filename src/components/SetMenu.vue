@@ -28,17 +28,6 @@
 
 <script>
 import axios from 'axios'
-export default {   
-    data(){
-    return{
-        products:[ 
-            {image : require('../assets/set2개.jpg'), title : '에피민트 2개 Set', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/set3개.jpg'), title : '에피민트 3개 Set', price : '24,900원', saleprice : '31,900원'},
-            {image : require('../assets/set4개.jpg'), title : '에피민트 4개 Set', price : '31,500원', saleprice : '42,800원'},
-            {image : require('../assets/set5개.jpg'), title : '에피민트 5개 Set', price : '37,500원', saleprice : '50,000원'}
-        ] 
-    }
-    import axios from 'axios'
 export default { 
     methods:{    
         data(){
@@ -52,8 +41,8 @@ export default {
         return (
         await axios({
           url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
-          method: "get", // post 명령어 
-          data: {}
+          method: "post", // post 명령어 
+          data: {"id" : this.loginid, "pw": this.loginpw}
 
         }).then((res) => { // 데이터 준 다음 받은 응답
             console.log(res.status)
@@ -61,17 +50,14 @@ export default {
             if(res.status == 200){
                 this.$router.push({name: 'main'})
             }
-        }.catch((e) => {
-          console.log(e);
         })
-      ).data;
+        .catch((e) => {
+          alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
+        })
       )
     }
 
   }
-}
-  }
-  
 }
 </script>
 

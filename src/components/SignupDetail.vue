@@ -196,6 +196,7 @@
 
 </template>
 
+
 <script>
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 var idPattern = /^[a-z]{1}[a-z0-9]{3,15}$/;
@@ -378,7 +379,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Poppins:wght@300&display=swap');
 
 .top {
