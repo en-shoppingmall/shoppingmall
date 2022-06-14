@@ -59,8 +59,7 @@
                     <td id="backgroundColor"><span>주소</span></td>
                     <td>
                         <input type="text" class="box middleSize address-position" v-model="postcode" disabled>
-                        <input type="button" class="btn zipcode" id="position" v-on:click="execDaumPostcode" value="우편번호"><br>
-                        
+                        <input type="button" class="btn zipcode" id="position" v-on:@click="execDaumPostcode" value="우편번호"><br>                 
                         <input type="text" class="box address-position longSize" id="address" v-model="address" disabled><span> 기본주소</span><br>
                         <input type="text" class="box address-position longSize"><span> 나머지주소(선택입력가능)</span>
                     </td>

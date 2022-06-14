@@ -9,7 +9,7 @@
             <div id = "name">{{product.title}}</div> <!-- 상품명 -->
             <span id = "sale-price">{{product.saleprice}}</span><!-- 세일가격 -->
             <span id = "price">&nbsp;&nbsp;&nbsp;{{product.price}}</span><!-- 파는가격 -->    
-            <br><br><br><br>               
+            <br><br><br><br>              
             </div>
         </div>
         </transition>
@@ -22,7 +22,6 @@
         </div>
     </div>
 </div>
-    
 </template>
 
 
@@ -36,43 +35,29 @@ export default {
             {image : require('../assets/set3개.jpg'), title : '에피민트 3개 Set', price : '24,900원', saleprice : '31,900원'},
             {image : require('../assets/set4개.jpg'), title : '에피민트 4개 Set', price : '31,500원', saleprice : '42,800원'},
             {image : require('../assets/set5개.jpg'), title : '에피민트 5개 Set', price : '37,500원', saleprice : '50,000원'}
-        ] 
+        ], 
+        productlist :[]
     }
-    import axios from 'axios'
-export default { 
-    methods:{    
-        data(){
-    return {
-            loginid :'',
-            loginpw :'',
-        }
     },
-
-    async login() { // 로그인 함수 
-        return (
-        await axios({
-          url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
-          method: "get", // post 명령어 
+    methods:{    
+    
+  },
+  mounted() { 
+        axios({
+          method: "get",
+          url: "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/set",
           data: {}
-
-        }).then((res) => { // 데이터 준 다음 받은 응답
-            console.log(res.status)
-            alert("로그인에 성공했습니다.")
-            if(res.status == 200){
-                this.$router.push({name: 'main'})
-            }
-        }.catch((e) => {
+        }).then(res => {
+        console.log(res.data)
+        }).catch((e) => {
           console.log(e);
         })
-      ).data;
-      )
     }
+  }
 
-  }
-}
-  }
   
-}
+  
+
 </script>
 
 <style>
