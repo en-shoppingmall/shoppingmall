@@ -67,8 +67,10 @@ export default {
 
         }).then((res) => { // 데이터 준 다음 받은 응답
             console.log(res.status)
-            alert(this.loginid,"로그인에 성공했습니다.");
-            this.$router.push({name: 'main'})
+            alert("로그인에 성공했습니다.")
+            if(res.status == 200){
+                this.$router.push({name: 'main'})
+            }
         })
         .catch((e) => {
           alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
