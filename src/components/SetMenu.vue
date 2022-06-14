@@ -2,6 +2,7 @@
  <div id = "set" >SET</div>
 <div class = "container">
     <div id = "contents">
+        <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
             <div class="col-md-3 col-lg4" v-for="(product, index) in products" :key = "index">
             <img :src="product.image" class="img-fluid">
@@ -11,6 +12,7 @@
             <br><br><br><br>               
             </div>
         </div>
+        </transition>
          <div class = "page-move">
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">FIRST</a>
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">PREV</a>
@@ -65,5 +67,18 @@ div {
     display: block;
 }
 
-
+.fade-enter-from{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-enter-active{
+    transition: all 2s ease;
+}
+.fade-leave-to{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-leave-active{
+    transition: all 2s ease;
+}
 </style>
