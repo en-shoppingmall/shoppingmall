@@ -5,16 +5,7 @@
   <home-top-menu></home-top-menu> <!-- 상단 메뉴바 -->
  
   <div> <!-- 이 div는 중앙화면 Div임 그니까 밑에 footer를 중앙화면 div만들고 안에 넣으면 됨-->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <main-background></main-background>
     <bottom-menu></bottom-menu><!-- 이게 밑에 CONTACT 안내 문구임 -->
   </div>
 </div>
@@ -24,12 +15,14 @@
 import EventBox from '../components/EventBox.vue'
 import HomeTopMenu from '../components/HomeTopMenu.vue'
 import BottomMenu from '../components/BottomMenu.vue'
+import Mainbackground from '../components/Mainbackground.vue'
 
 export default {
     name: 'MainView',
     components: { 
     'event-box' : EventBox,
     'home-top-menu' : HomeTopMenu,
+    'main-background': Mainbackground,
     'bottom-menu' : BottomMenu
     },
 }

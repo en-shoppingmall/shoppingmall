@@ -2,6 +2,7 @@
  <div id = "set" >SET</div>
 <div class = "container">
     <div id = "contents">
+        <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
             <div class="col-md-3 col-lg4" v-for="(product, index) in products" :key = "index">
             <img :src="product.image" class="img-fluid">
@@ -11,6 +12,7 @@
             <br><br><br><br>               
             </div>
         </div>
+        </transition>
          <div class = "page-move">
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">FIRST</a>
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">PREV</a>
@@ -25,7 +27,8 @@
 
 
 <script>
-export default {
+import axios from 'axios'
+export default {   
     data(){
     return{
         products:[ 
@@ -35,7 +38,40 @@ export default {
             {image : require('../assets/set5개.jpg'), title : '에피민트 5개 Set', price : '37,500원', saleprice : '50,000원'}
         ] 
     }
+    import axios from 'axios'
+export default { 
+    methods:{    
+        data(){
+    return {
+            loginid :'',
+            loginpw :'',
+        }
+    },
+
+    async login() { // 로그인 함수 
+        return (
+        await axios({
+          url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
+          method: "get", // post 명령어 
+          data: {}
+
+        }).then((res) => { // 데이터 준 다음 받은 응답
+            console.log(res.status)
+            alert("로그인에 성공했습니다.")
+            if(res.status == 200){
+                this.$router.push({name: 'main'})
+            }
+        }.catch((e) => {
+          console.log(e);
+        })
+      ).data;
+      )
+    }
+
   }
+}
+  }
+  
 }
 </script>
 
@@ -65,5 +101,18 @@ div {
     display: block;
 }
 
-
+.fade-enter-from{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-enter-active{
+    transition: all 2s ease;
+}
+.fade-leave-to{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-leave-active{
+    transition: all 2s ease;
+}
 </style>

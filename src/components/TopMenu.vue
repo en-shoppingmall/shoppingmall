@@ -32,7 +32,8 @@
             <router-view/>
         </li>
         <li>
-            <a href = "https://epimint.com/index.html">JOIN</a>
+            <router-link to="/signup">JOIN</router-link>
+            <router-view />
         </li>
       </ul>    
     </div>

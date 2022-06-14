@@ -32,8 +32,8 @@
             <router-view/>
         </li>
         <li>
-            <router-link to="/login">JOIN</router-link>   <!--로그인 페이지 링크 --> 
-            <router-view/>
+           <router-link to="/signup">JOIN</router-link>
+            <router-view />
         </li>
       </ul>    
     </div>
