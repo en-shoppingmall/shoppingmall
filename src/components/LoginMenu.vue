@@ -30,9 +30,6 @@
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
                 <button type = "button" id = "login-button" @click = "userlist">기존 회원 로그인</button>
-                <div class="de" v-for="(user, index) in userinfor" :key = "index">
-                    {{user.product_name }}</div><br><br><br><br><br>
-
             <div id = "search-join">
                 <a href = "https://epimint.com/index.html">아이디 찾기 | </a>
                 <a href = "https://epimint.com/index.html">비밀번호 찾기</a>
@@ -52,33 +49,43 @@
 
 <script>      
 import axios from 'axios'
-export default {
-    data(){
+export default { 
+    methods:{    
+        data(){
     return {
+            loginid :'',
+            loginpw :'',
             userinfor : []
         }
-    },
-    methods:{      
+    },  
         async userlist() {
         this.userinfor = await this.api(
         "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test",
-        "get",
-        {}
+        "post",
+        {
+            "id" :this.loginid, "pw":this.loginpw
+        }
       )
-      console.log(this.userinfor.id);
+     
     },
-    async api(url, method, data) {
+    async api(url, method) {
       return (
         await axios({
-          method: method,
           url: url,
-          data: data,
-        }).catch((e) => {
-          console.log(e);
+          method: method,
+          data: {"id" : this.loginid, "pw": this.loginpw}
+        }).then((res) => {
+            console.log(res)
+            alert("로그인에 성공했습니다.")
         })
-      ).data;
+        .catch((e) => {
+          console.log(e)
+        })
+      )
     },
   },
+  
+
 }
 </script>
 
