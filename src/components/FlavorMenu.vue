@@ -1,5 +1,7 @@
 <template>
- <div id = "flavor" >FLAVOR</div>
+ <div id = "flavor" >
+        FLAVOR
+    </div>
 <div class = "container">
     <div id = "contents">
         <transition appear name = "fade">
@@ -81,6 +83,7 @@ a{
     text-decoration : none;
     color: #333;
 }
+
 .fade-enter-from{
     opacity: 0;
   transform: translateY(30px);
