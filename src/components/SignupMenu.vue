@@ -11,7 +11,7 @@
             
             <p class="text" id="sign">{{signUpMessage}}</p>
             <p class="text" id="message"><br>{{message}}<br>{{messageSecond}}</p>
-            <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmg2m5lj69fsf73419b2103fed20961340e22f4d0e46l4a5tm37%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="btn">
+            <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmg2m5lj69fsf73419b2103fed20961340e22f4d0e46l4a5tm37%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="btn kakao-button">
             {{kakaoSignUp}}</a>
             <p>또는</p><br><br><br>
             <div class="btn btnUsual">
@@ -199,6 +199,13 @@ p:nth-child(7) {
 .btnBack:hover {
   background: #fafafa;
   text-decoration: none;
+}
+.kakao-button {
+    background-image: url("../assets/kakaotalk.png");
+    background-position-x: 5%;
+    background-position-y: 45%;
+    background-size: 6%;
+    background-repeat: no-repeat;
 }
 
 </style>
