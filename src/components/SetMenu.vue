@@ -4,7 +4,7 @@
     <div id = "contents">
         <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
-            <div class="col-md-3 col-lg4" v-for="(product, index) in products" :key = "index">
+            <div class="col-md-3 col-lg4" v-for="(product, index) in productlist" :key = "index">
             <img :src="product.image" class="img-fluid">
             <div id = "name">{{product.title}}</div> <!-- 상품명 -->
             <span id = "sale-price">{{product.saleprice}}</span><!-- 세일가격 -->
@@ -41,17 +41,20 @@ export default {
     },
     methods:{    
     
-  },
+},
   mounted() { 
-        axios({
+        this.productlist = axios({
           method: "get",
           url: "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/set",
           data: {}
         }).then(res => {
-        console.log(res.data)
+        console.log(res.data.title)
+        this.productlist = res.data
+        
         }).catch((e) => {
           console.log(e);
         })
+        .data
     }
   }
 
@@ -85,7 +88,6 @@ export default {
 div {
     display: block;
 }
-
 .fade-enter-from{
     opacity: 0;
   transform: translateY(30px);

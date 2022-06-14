@@ -59,7 +59,8 @@
                     <td id="backgroundColor"><span>주소</span></td>
                     <td>
                         <input type="text" class="box middleSize address-position" v-model="postcode" disabled>
-                        <input type="button" class="btn zipcode" id="position" v-on:@click="execDaumPostcode" value="우편번호"><br>                 
+                        <input type="button" class="btn zipcode" id="position" v-on:click="execDaumPostcode" value="우편번호"><br>
+                        
                         <input type="text" class="box address-position longSize" id="address" v-model="address" disabled><span> 기본주소</span><br>
                         <input type="text" class="box address-position longSize"><span> 나머지주소(선택입력가능)</span>
                     </td>
@@ -195,14 +196,13 @@
 
 </template>
 
+
 <script>
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 var idPattern = /^[a-z]{1}[a-z0-9]{3,15}$/;
-
 export default {
     name: 'SignUpDetail',
   data(){
-
       return {
           inputId: "",
           password: "",
@@ -211,18 +211,14 @@ export default {
           middlePhoneNumber: "",
           endPhoneNumber: "",
           email: "",
-
           postcode: "",
           address: "",
-
           idMessage: "",
           passwordMessage: "",
           doublePasswordMessage: "",
           nameMessage: "",
           emailMessage: "",
-
           count: 0,
-
           options: [
         { t: "031" },
         { t: "032" },
@@ -278,7 +274,6 @@ export default {
                },
             }).open();
        },
-
         checkId() {
            if(idPattern.test(this.inputId)) {
                this.idMessage = this.inputId.toString() + "는 사용 가능한 아이디입니다.";
@@ -290,13 +285,11 @@ export default {
                this.idMessage = "대문자/공백/특수문자가 포함되었거나, 숫자로 시작 또는 숫자로만 이루어진 아이디는 사용할 수 없습니다.";
            }
        },
-
        isPassword() {
            var passwordNumberPattern = /[0-9]+/;
            var passwordSmallPattern = /[a-z]+/;
            var passwordBigPattern = /[A-Z]+/;
            var passwordSignPattern = /[~`!@#$%^()_=|;:<>,.?-{}\\/\\[\\]]+/;
-
            if (passwordNumberPattern.test(this.password)) {
                this.count++;
            }
@@ -310,7 +303,6 @@ export default {
                this.count++;
            }
        },
-
        checkPasswordDouble() {
            if(this.doublePassword != this.password) {
                this.doublePasswordMessage = "비밀번호가 일치하지 않습니다.";
@@ -319,7 +311,6 @@ export default {
                this.doublePasswordMessage = " ";
            }
        },
-
        checkEmail() {
            if(emailPattern.test(this.email)) {
                this.emailMessage = " ";
@@ -328,7 +319,6 @@ export default {
                this.emailMessage = "유효한 이메일을 입력해 주세요.";
            }
        },
-
        checkText() {
            if(this.name.length == 0) {
                alert("이름 항목은 필수 입력값입니다.");
@@ -346,16 +336,13 @@ export default {
                alert("휴대전화를 입력해주세요.")
            }
        },
-
        // 한번 더 정규식 등을 이용해 검사하는 함수
        checkDataTwice() {
            var middleNumberPattern = /^[0-9]{3,4}$/;
            var endNumberPattern = /^[0-9]{4}$/;
-
            if(this.inputId.length > 0 && this.inputId.length < 4) {
                alert("아이디 항목이 4자(개) 이상으로 해주십시오.");
            }
-
            else if(!(this.count > 2 || (this.password.length >= 8 && this.password.length <= 16))) {
                alert("비밀번호 입력 조건을 다시 한번 확인해주세요.\n\n※ 비밀번호 입력 조건\n- 대소문자/숫자/특수문자 중 2가지 이상 조합,8자~16자\n- 입력 가능 특수문자\n  ~`!@#$%^()_-={}[]|;:<>,.?/\n- 공백 입력 불가능");
            }
@@ -363,12 +350,10 @@ export default {
            else if(this.inputId.length > 0 && !idPattern.test(this.inputId)) {
                alert("대문자/공백/특수문자가 포함되었거나, 숫자로 시작 또는 숫자로만 이루어진 아이디는 사용할 수 없습니다.");
            }
-
            else if(this.middlePhoneNumber.length > 0 && this.endPhoneNumber.length > 0 &&
            (!middleNumberPattern.test(this.middlePhoneNumber) || !endNumberPattern.test(this.endPhoneNumber))) {
                alert("올바른 휴대전화번호를 입력하세요.");
            }
-
            else if(this.email.length > 0 && !emailPattern.test(this.email)) {
                alert("입력하신 이메일을 사용할 수 없습니다.");
            }
@@ -377,14 +362,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&family=Poppins:wght@300&display=swap');
-
 .top {
     margin:9% auto;
     text-align:center;
 }
-
 /* JOIN US */
 #mainText {
     font-family:'Poppins', sans-serif;
@@ -392,14 +375,12 @@ export default {
     font-weight: 500;
     text-align:center;
 }
-
 /* 테이블의 캡션 글자 디자인 */
 .captionText {
     font-family:'Poppins', sans-serif;
     
     font-weight: 500;
 }
-
 /* 기본 버튼 디자인 */
 .btn {
     -webkit-border-radius: 0;
@@ -412,20 +393,16 @@ export default {
   padding: 1.1% 9%;
   width:27%;
 }
-
 /* 네이버버튼 디자인 */
 .naver {
   background: #4bba2d;
-
   margin: 3% auto;
   display: block;
 }
-
 .naver:hover {
   background: #85d574;
   color: #ffffff;
 }
-
 /* 페이스북버튼 디자인 */
 .facebook {
   background: #5a6ea7;
@@ -433,25 +410,20 @@ export default {
   margin: -2.5% auto;
   display: block;
 }
-
 .facebook:hover {
   background: #788bb9;
   color: #ffffff;
 }
-
 /* 카카오버튼 디자인 */
 .kakao {
   background: #fee500;
-
   margin: 3% auto;
   display: block;
 }
-
 .kakao:hover {
   background: #f8ee80;
   color: #ffffff;
 }
-
 /* 테이블 조절 */
 table {
     width: 80%;
@@ -464,12 +436,10 @@ td {
     font-size:0.8em;
     font-family: 'Noto Sans KR', sans-serif;
 }
-
 /* 폼 배경색 */
 #backgroundColor {
     background-color: #faf9f9;
 }
-
 /* text 써넣는 곳 기본 크기 지정 */
 .box {
     height: 1%;
@@ -484,45 +454,38 @@ td {
 .longSize {
     width: 30%;
 }
-
 /* text 써넣는 곳 중간 크기 ex) 폰번호 */
 .middleSize {
     width: 7%;
 }
-
 /* text 써넣는 곳 제일 작은 크기 ex) 생년월일 중 월, 일 받을 때 */
 .smallSize {
     width: 3%;
 }
-
 /* 회원구분란 위치 조절 */
 .memberSelection {
     display: flex;
   justify-content: center;
     margin: -8% auto;
 }
-
 /* 필수정보란 위치 조절 */
 .form {
     display: flex;
   justify-content: center;
     margin: 10% auto;
 }
-
 /* 추가정보란 위치 조절 */
 .additionalForm {
     display: flex;
   justify-content: center;
     margin: -8% auto;
 }
-
 /* 전체동의란 위치 조절 */
 .information {
     display: flex;
   justify-content: center;
     margin: 11% auto;
 }
-
 .informationBox {
     width:100%;
     height:100px;
@@ -531,7 +494,6 @@ td {
     padding: 0 0.5em;
     background-color: #fff;
 }
-
 /* 우편번호 버튼 디자인 */
 .zipcode {
   -webkit-border-radius: 2.5;
@@ -543,14 +505,11 @@ td {
   padding: 0.1% 0.5%;
   width: 6%;
   border: solid #e4e2e2 1px;
-
   margin:0.3%;
 }
-
 .zipcode:hover {
   background: #faf9f9;
 }
-
 /* 회원가입 버튼 */
 .completion {
   -webkit-border-radius: 2.5;
@@ -562,46 +521,38 @@ td {
   background: #2b2a2b;
   padding: 0.7% 0.1%;
   width:10%;
-
   margin: -10% auto;
   display: block;
 }
-
 .completion:hover {
     border: solid #e4e2e2 1px;
   background: #faf9f9;
   color:black;
   text-decoration: none;
 }
-
 /* 라디오, 체크 버튼이 옆 글자와 안맞는 경우가 있어 position을 이용해 위치 보정 */
 #position {
     margin-top: -0.5%;
 	vertical-align: middle;
 }
-
 /* 전화번호 셀렉박스 디자인 */
 .form-design {
     border: solid #e4e2e2;
     width: 7%;
     height: 0.1%;
 }
-
 /* 테이블 정보 칸 넓이 ex) 이름 */
 .form-width {
     width:12%;
 }
-
 /* 주소란에는 정보 입력 칸이 많음 -> 위치 조절 */
 .address-position {
     margin: 0.3%;
 }
-
 #essntialPosition {
     caption-side:right;
 }
 td{
     text-align : left;
 }
-
 </style>

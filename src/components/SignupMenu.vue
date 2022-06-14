@@ -1,7 +1,8 @@
 <template>
     <body>
         <div class="signupMain">
-            <a href="#" class="btn btnBack">{{backMessage}}</a>
+            
+            <input type="button" class="btn btnBack" onclick="history.back()" value="< 뒤로가기">
 
             <a href="https://epimint.com/">
             <img id="logo" src="https://uneedcomms-keepgrow.s3.ap-northeast-2.amazonaws.com/18c401a3c2154dbb86ff87b47f30fda4/processes/1623922590774.png">
@@ -10,7 +11,7 @@
             
             <p class="text" id="sign">{{signUpMessage}}</p>
             <p class="text" id="message"><br>{{message}}<br>{{messageSecond}}</p>
-            <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmg2m5lj69fsf73419b2103fed20961340e22f4d0e46l4a5tm37%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="btn">
+            <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmg2m5lj69fsf73419b2103fed20961340e22f4d0e46l4a5tm37%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="btn kakao-button">
             {{kakaoSignUp}}</a>
             <p>또는</p><br><br><br>
             <div class="btn btnUsual">
@@ -70,14 +71,16 @@ export default {
 
 .text {
     font-family:'Noto Sans KR', sans-serif;
+    text-align:left;
 }
 
 /* 회원가입 문구 */
 #sign {
     display:flex;
-    margin: 6% 33.5%;
-    font-size:1.5em;
+    margin: 6% 27.6%;
+    font-size:1.44em;
     font-weight: bold;
+    text-align:left;
 }
 
 /* 회원가입 밑 안내메시지 */
@@ -147,7 +150,8 @@ p:nth-child(7) {
   margin: 3% auto;
   display: block;
   text-align: center;
-  text-decoration : none;
+  text-decoration-color:#000000;
+  text-decoration-line:none;
 }
 
 /* 카카오 싱크 관련 하단 메시지 */
@@ -195,6 +199,12 @@ p:nth-child(7) {
 .btnBack:hover {
   background: #fafafa;
   text-decoration: none;
+}
+.kakao-button {
+    background-position-x: 5%;
+    background-position-y: 45%;
+    background-size: 6%;
+    background-repeat: no-repeat;
 }
 
 </style>
