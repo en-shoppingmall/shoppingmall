@@ -13,7 +13,7 @@
         카카오 로그인
         </a>
         </div>
-
+        
         <div class="memberSelection">
           <table>
             <tbody>
@@ -59,7 +59,7 @@
                     <td id="backgroundColor"><span>주소</span></td>
                     <td>
                         <input type="text" class="box middleSize address-position" v-model="postcode" disabled>
-                        <input type="button" class="btn zipcode" id="position" v-on:click="execDaumPostcode" value="우편번호"><br>
+                        <input type="button" class="btn zipcode" id="position" v-on:click="executeDaumPostcode" value="우편번호"><br>
                         
                         <input type="text" class="box address-position longSize" id="address" v-model="address" disabled><span> 기본주소</span><br>
                         <input type="text" class="box address-position longSize"><span> 나머지주소(선택입력가능)</span>
@@ -188,19 +188,19 @@
     <input type="button" @click="[checkText(), checkDataTwice()]" class="btn completion" value="회원가입">
     </div>
 </body>
-
 </template>
 
 
 <script>
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 var idPattern = /^[a-z]{1}[a-z0-9]{3,15}$/;
-var checkbox = [];
 
 export default {
     name: 'SignUpDetail',
   data: function(){
       return {
+
+          // 회원가입시 필요한 정보들
           inputId: "",
           password: "",
           doublePassword: "",
@@ -209,17 +209,20 @@ export default {
           endPhoneNumber: "",
           email: "",
 
+          // 우편번호 및 주소는 선택하면 자동으로 채워지게 함
           postcode: "",
           address: "",
 
+          // 예외처리 후 메시지를 띄워야 함
           idMessage: "",
           passwordMessage: "",
           doublePasswordMessage: "",
-          nameMessage: "",
           emailMessage: "",
 
+          // 비밀번호 체크할 때 필요한 요소
           count: 0,
 
+          // 일반 전화번호 앞자리
           options: [
         { t: "031" },
         { t: "032" },
@@ -253,6 +256,7 @@ export default {
         { t: "0508" }
       ],
 
+      // 이용약관 체크 박스 v-model
       check: {
           checkboxFirst: false,
           checkboxSecond: false,
@@ -263,6 +267,8 @@ export default {
   },
 
   computed: {
+
+      // 전체 동의 박스 누르면 전부 다 눌려지고, 또 전부 다 안눌려지게 하는 기능
       checkAll: {
           get: {
 
@@ -286,15 +292,9 @@ export default {
   },
   
   methods: {
-      allCheck() {
-          this.checkboxFirst = true;
-          this.checkboxSecond = true;
-          this.checkboxThird = true;
-          this.checkboxFourth = true;
-      },
 
-
-       execDaumPostcode() {
+      // 다음 주소 불러오기
+       executeDaumPostcode() {
            new window.daum.Postcode({
                oncomplete: (data) => {
                    if (this.extraAddress !== "") {
@@ -314,6 +314,7 @@ export default {
             }).open();
        },
 
+       // id 예외처리
         checkId() {
            if(idPattern.test(this.inputId)) {
                this.idMessage = this.inputId.toString() + "는 사용 가능한 아이디입니다.";
@@ -326,7 +327,9 @@ export default {
            }
        },
 
+       // 비밀번호 예외처리
        isPassword() {
+           this.count = 0;
            var passwordNumberPattern = /[0-9]+/;
            var passwordSmallPattern = /[a-z]+/;
            var passwordBigPattern = /[A-Z]+/;
@@ -346,6 +349,7 @@ export default {
            }
        },
 
+       // 비밀번호 한번 더 입력할 때 이전 비밀번호와 맞는지 체크
        checkPasswordDouble() {
            if(this.doublePassword != this.password) {
                this.doublePasswordMessage = "비밀번호가 일치하지 않습니다.";
@@ -355,6 +359,7 @@ export default {
            }
        },
 
+       // 이메일 예외처리
        checkEmail() {
            if(emailPattern.test(this.email)) {
                this.emailMessage = " ";
@@ -364,6 +369,7 @@ export default {
            }
        },
 
+       // 빈칸에 필수 입력값들이 잘 입력되어있는지 살피고, 입력 안됐을 경우 alert
        checkText() {
            if(this.name.length == 0) {
                alert("이름 항목은 필수 입력값입니다.");
@@ -382,7 +388,7 @@ export default {
            }
        },
 
-       // 한번 더 정규식 등을 이용해 검사하는 함수
+       // 한번 더 정규식 등을 이용해 예외 검사 -> alert로 경고
        checkDataTwice() {
            var middleNumberPattern = /^[0-9]{3,4}$/;
            var endNumberPattern = /^[0-9]{4}$/;
@@ -391,7 +397,7 @@ export default {
                alert("아이디 항목이 4자(개) 이상으로 해주십시오.");
            }
 
-           else if(!(this.count > 2 || (this.password.length >= 8 && this.password.length <= 16))) {
+           else if(this.password.length > 0 && !(this.count > 2 || (this.password.length >= 8 && this.password.length <= 16))) {
                alert("비밀번호 입력 조건을 다시 한번 확인해주세요.\n\n※ 비밀번호 입력 조건\n- 대소문자/숫자/특수문자 중 2가지 이상 조합,8자~16자\n- 입력 가능 특수문자\n  ~`!@#$%^()_-={}[]|;:<>,.?/\n- 공백 입력 불가능");
            }
            
@@ -632,8 +638,8 @@ td {
     margin: 0.3%;
 }
 
-#essntialPosition {
-    caption-side:right;
+#essentialPosition {
+    
 }
 td{
     text-align : left;

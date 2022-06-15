@@ -131,6 +131,9 @@ p:nth-child(7) {
   margin:9% auto;
   display: block;
 }
+.btn:hover {
+    text-decoration: none;
+}
 
 /* 일반회원가입 버튼 */
 .btnUsual {
