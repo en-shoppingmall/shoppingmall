@@ -69,7 +69,7 @@ export default {
             console.log(res.status)
             alert("로그인에 성공했습니다.")
             if(res.status == 200){
-                this.$router.push({name: 'main'})
+                this.$router.push({name: 'loginafter'})
             }
         })
         .catch((e) => {

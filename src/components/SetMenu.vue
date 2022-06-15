@@ -48,7 +48,7 @@ export default {
           url: "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/set",
           data: {}
         }).then(res => {
-        console.log(res.data.title)
+        console.log(res.data)
         this.productlist = res.data
         
         }).catch((e) => {
