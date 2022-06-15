@@ -141,12 +141,7 @@
             <tbody>
                 <tr>
                     <td id="backgroundColor">
-                        <b-form-checkbox 
-                        id="checkbox-1"
-                        v-model="status"
-                        name="checkbox-1"
-                        value="accepted"
-                        unchecked-value="not_accepted">ㅤ이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</b-form-checkbox>
+                        <input type="checkbox" v-model="checkAll">&nbsp;<label>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</label>
                     </td>
                 </tr>
                 <tr id="backgroundColor">
@@ -156,7 +151,7 @@
                         <p></p>
                     </div>
                     <span>이용약관에 동의하십니까?</span>&nbsp;
-                        <input type="checkbox">
+                        <input type="checkbox" v-model="check.checkboxFirst">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -167,7 +162,7 @@
                         <p></p>
                     </div>
                     <span>개인정보 수집 및 이용에 동의하십니까?</span>&nbsp;
-                        <input type="checkbox">
+                        <input type="checkbox" v-model="check.checkboxSecond">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -178,11 +173,11 @@
                         <p></p>
                     </div>
                     <span>SMS 수신을 동의하십니까? </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox">
+                    <input type="checkbox" v-model="check.checkboxThird">
                         <label>&nbsp;&nbsp;동의함</label>
                     <br>
                     <span>이메일 수신을 동의하십니까?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <input type="checkbox">
+                   <input type="checkbox" v-model="check.checkboxFourth">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -200,11 +195,11 @@
 <script>
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 var idPattern = /^[a-z]{1}[a-z0-9]{3,15}$/;
+var checkbox = [];
 
 export default {
     name: 'SignUpDetail',
-  data(){
-
+  data: function(){
       return {
           inputId: "",
           password: "",
@@ -257,10 +252,48 @@ export default {
         { t: "019" },
         { t: "0508" }
       ],
+
+      check: {
+          checkboxFirst: false,
+          checkboxSecond: false,
+          checkboxThird: false,
+          checkboxFourth: false,
+      }
       };
+  },
+
+  computed: {
+      checkAll: {
+          get: {
+
+          },
+          set: function(e) {
+              if (e) {
+                  this.check.checkboxFirst = true;
+                  this.check.checkboxSecond = true;
+                  this.check.checkboxThird = true;
+                  this.check.checkboxFourth = true;
+              }
+              else {
+                  this.check.checkboxFirst = false;
+                  this.check.checkboxSecond = false;
+                  this.check.checkboxThird = false;
+                  this.check.checkboxFourth = false;
+              }
+          }
+      }
+
   },
   
   methods: {
+      allCheck() {
+          this.checkboxFirst = true;
+          this.checkboxSecond = true;
+          this.checkboxThird = true;
+          this.checkboxFourth = true;
+      },
+
+
        execDaumPostcode() {
            new window.daum.Postcode({
                oncomplete: (data) => {
