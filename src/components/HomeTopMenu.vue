@@ -21,7 +21,8 @@
           <router-view/>
         </li>
         <li>
-          <a href = "https://epimint.com/index.html">REVIEW</a>
+          <router-link to="/review">REVIEW</router-link>
+          <router-view/>
         </li>
       </ul>
 

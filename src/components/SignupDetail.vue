@@ -59,7 +59,7 @@
                     <td id="backgroundColor"><span>주소</span></td>
                     <td>
                         <input type="text" class="box middleSize address-position" v-model="postcode" disabled>
-                        <input type="button" class="btn zipcode" id="position" v-on:click="executeDaumPostcode" value="우편번호"><br>
+                        <input type="button" class="btn zipcode" id="zipcodeButtonPosition" v-on:click="executeDaumPostcode" value="우편번호"><br>
                         
                         <input type="text" class="box address-position longSize" id="address" v-model="address" disabled><span> 기본주소</span><br>
                         <input type="text" class="box address-position longSize"><span> 나머지주소(선택입력가능)</span>
@@ -141,7 +141,7 @@
             <tbody>
                 <tr>
                     <td id="backgroundColor">
-                        <input type="checkbox" v-model="checkAll">&nbsp;<label>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</label>
+                        <input type="checkbox" id="checkboxPosition" v-model="checkAll">&nbsp;<label>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</label>
                     </td>
                 </tr>
                 <tr id="backgroundColor">
@@ -151,7 +151,7 @@
                         <p></p>
                     </div>
                     <span>이용약관에 동의하십니까?</span>&nbsp;
-                        <input type="checkbox" v-model="check.checkboxFirst">
+                        <input type="checkbox" id="checkboxPosition" v-model="check.checkboxFirst">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -162,7 +162,7 @@
                         <p></p>
                     </div>
                     <span>개인정보 수집 및 이용에 동의하십니까?</span>&nbsp;
-                        <input type="checkbox" v-model="check.checkboxSecond">
+                        <input type="checkbox" id="checkboxPosition" v-model="check.checkboxSecond">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -172,12 +172,12 @@
                     <div class="informationBox">
                         <p></p>
                     </div>
-                    <span>SMS 수신을 동의하십니까? </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" v-model="check.checkboxThird">
+                    <span>SMS 수신을 동의하십니까? &nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="checkboxPosition" v-model="check.checkboxThird">
                         <label>&nbsp;&nbsp;동의함</label>
                     <br>
-                    <span>이메일 수신을 동의하십니까?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                   <input type="checkbox" v-model="check.checkboxFourth">
+                    <span>이메일 수신을 동의하십니까?  &nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="checkbox" id="checkboxPosition" v-model="check.checkboxFourth">
                         <label>&nbsp;&nbsp;동의함</label>
                     </td>
                 </tr>
@@ -385,6 +385,9 @@ export default {
            }
            else if(this.middlePhoneNumber.length == 0 || this.endPhoneNumber.length == 0) {
                alert("휴대전화를 입력해주세요.")
+           }
+           else if(this.check.checkboxFirst == false || this.check.checkboxSecond == false) {
+               alert("이용약관에 동의 하세요")
            }
        },
 
@@ -638,11 +641,14 @@ td {
     margin: 0.3%;
 }
 
-#essentialPosition {
-    
-}
 td{
     text-align : left;
+}
+
+
+
+#zipcodeButtonPosition {
+    margin-top:-0.3%;
 }
 
 </style>
