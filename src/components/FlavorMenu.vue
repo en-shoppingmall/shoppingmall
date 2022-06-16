@@ -6,12 +6,12 @@
     <div id = "contents">
         <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
-            <div class="col-md-3 col-lg2" v-for="(product, index) in products" :key = "index">
+            <div class="col-md-3 col-lg4" v-for="(product, index) in productlist" :key = "index">
             <img :src="product.image" class="img-fluid">
-            <div id = "name">{{product.title}}</div> <!-- 상품명 -->
-            <span id = "sale-price">{{product.saleprice}}</span><!-- 세일가격 -->
-            <span id = "price">&nbsp;&nbsp;&nbsp;{{product.price}}</span><!-- 파는가격 -->
-            <br><br><br><br>                
+            <div id = "name">{{product.set_name}}</div> <!-- 상품명 -->
+            <span id = "sale-price">{{product.price}}</span><!-- 세일가격 -->
+            <span id = "price">&nbsp;&nbsp;&nbsp;{{product.saled_price}}원</span><!-- 파는가격 -->    
+            <br><br><br><br>              
             </div>
         </div>
         </transition>
@@ -29,19 +29,33 @@
 
 
 <script>
+import axios from 'axios'
 export default {
     data(){
+        
     return{
-        products:[ 
-            {image : require('../assets/01초코칩.jpg'), title : '01 민트 초코칩(2개 set)', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/02초코쿠키.jpg'), title : '02 민트 초코쿠키(2개 set)', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/03더블초코.jpg'), title : '03 민트 더블초코(2개 set)', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/04초코팝핑.jpg'), title : '04 민트 초코팝핑(2개 set)', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/05멜츠.jpg'), title : '05 민트 레인보우멜츠(2개 set)', price : '18,900원', saleprice : '19,900원'}
-        ] 
+        productlist :[]
+    }
+    },
+    methods:{    
+    
+},
+   mounted() { 
+        this.productlist = axios({
+          method: "get",
+          url: "http://13.209.68.70:3000/product/flavor",
+          data: {}
+        }).then(res => {
+        console.log(res.data)
+        this.productlist = res.data
+        
+        }).catch((e) => {
+          console.log(e);
+        })
+        .data
     }
   }
-}
+
 </script>
 
 <style>

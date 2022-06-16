@@ -41,6 +41,11 @@ const routes = [
     path : '/loginafter',
     name : 'loginafter',
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginAfterView.vue')
+  },
+  {
+    path : '/purchasepage',
+    name : 'purchasepage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/PurchaseView.vue')
   }
 ]
 
