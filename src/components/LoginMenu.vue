@@ -18,7 +18,7 @@
                 <p id = "text">아이디와 비밀번호 입력하기 귀찮으시죠?<br>
                     카카오로 1초 만에 로그인 하세요.
                 </p>
-                <a class="Kakao-button" onclick="MemberAction.kakaosyncLogin('f73419b2103fed20961340e22f4d0e46')">
+                <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmoahl6uvkpjf73419b2103fed20961340e22f4d0e46l4b54jsd%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="Kakao-button">
                 카카오 1초 로그인/회원가입</a>
             </div>
             <br>
@@ -69,7 +69,7 @@ export default {
             console.log(res.status)
             alert("로그인에 성공했습니다.")
             if(res.status == 200){
-                this.$router.push({name: 'main'})
+                this.$router.push({name: 'loginafter'})
             }
         })
         .catch((e) => {

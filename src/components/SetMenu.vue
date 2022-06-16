@@ -2,15 +2,17 @@
  <div id = "set" >SET</div>
 <div class = "container">
     <div id = "contents">
+        <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
-            <div class="col-md-3 col-lg4" v-for="(product, index) in products" :key = "index">
+            <div class="col-md-3 col-lg4" v-for="(product, index) in productlist" :key = "index">
             <img :src="product.image" class="img-fluid">
-            <div id = "name">{{product.title}}</div> <!-- 상품명 -->
-            <span id = "sale-price">{{product.saleprice}}</span><!-- 세일가격 -->
-            <span id = "price">&nbsp;&nbsp;&nbsp;{{product.price}}</span><!-- 파는가격 -->    
-            <br><br><br><br>               
+            <div id = "name">{{product.set_name}}</div> <!-- 상품명 -->
+            <span id = "sale-price">{{product.price}}</span><!-- 세일가격 -->
+            <span id = "price">&nbsp;&nbsp;&nbsp;{{product.saled_price}}</span><!-- 파는가격 -->    
+            <br><br><br><br>              
             </div>
         </div>
+        </transition>
          <div class = "page-move">
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">FIRST</a>
             <a class="btn btn-outline-secondary btn-sm" href="https://epimint.com/product/list.html?cate_no=24">PREV</a>
@@ -20,23 +22,39 @@
         </div>
     </div>
 </div>
-    
 </template>
 
 
 <script>
-export default {
+import axios from 'axios'
+export default {   
     data(){
     return{
-        products:[ 
-            {image : require('../assets/set2개.jpg'), title : '에피민트 2개 Set', price : '18,900원', saleprice : '19,900원'},
-            {image : require('../assets/set3개.jpg'), title : '에피민트 3개 Set', price : '24,900원', saleprice : '31,900원'},
-            {image : require('../assets/set4개.jpg'), title : '에피민트 4개 Set', price : '31,500원', saleprice : '42,800원'},
-            {image : require('../assets/set5개.jpg'), title : '에피민트 5개 Set', price : '37,500원', saleprice : '50,000원'}
-        ] 
+        productlist :[]
+    }
+    },
+    methods:{    
+    
+},
+  mounted() { 
+        this.productlist = axios({
+          method: "get",
+          url: "http://13.209.68.70:3000/product/set",
+          data: {}
+        }).then(res => {
+        console.log(res.data)
+        this.productlist = res.data
+        
+        }).catch((e) => {
+          console.log(e);
+        })
+        .data
     }
   }
-}
+
+  
+  
+
 </script>
 
 <style>
@@ -64,6 +82,18 @@ export default {
 div {
     display: block;
 }
-
-
+.fade-enter-from{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-enter-active{
+    transition: all 2s ease;
+}
+.fade-leave-to{
+    opacity: 0;
+  transform: translateY(30px);
+}
+.fade-leave-active{
+    transition: all 2s ease;
+}
 </style>
