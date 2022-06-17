@@ -31,9 +31,10 @@
             </div>
                 <button type = "button" id = "login-button" @click = "login">기존 회원 로그인</button>
             <div id = "search-join">
-                <a href = "https://epimint.com/index.html">아이디 찾기 | </a>
-                <a href = "https://epimint.com/index.html">비밀번호 찾기</a>
-                <a href = "https://epimint.com/index.html" id = "join">가입하기</a>
+                <router-link to="/serachpage" class = "idsearch">계정찾기</router-link>
+                <router-view />
+                <router-link to="/signup" id = "join">가입하기</router-link>
+                <router-view />
             </div>
             <hr width = "100%" color = "black; width = 1px;"> <!-- 중간에 회색 실선 -->
         </div>    
@@ -173,6 +174,9 @@ input{
 #search-join{ /* 아이디 비밀번호 찾기, 회원가입 링크묶은 것*/
     margin-top : 20px;
     text-align : left;
+    text-decoration : none;
+    color : black;
+    font-size : 13px;
 }
 #join{/* 회원가입 링크*/
     float: right;
@@ -210,5 +214,8 @@ a{
     text-decoration : none;
     color : black;
     font-size : 13px;
+}
+.idsearch{
+    text-align:left;
 }
 </style>

@@ -46,6 +46,11 @@ const routes = [
     path : '/purchasepage',
     name : 'purchasepage',
     component: () => import(/* webpackChunkName: "about" */ '../views/PurchaseView.vue')
+  },
+  {
+    path : '/serachpage',
+    name : 'serachpage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SearchIdView.vue')
   }
 ]
 

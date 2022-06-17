@@ -9,7 +9,7 @@
 <script>
 import TopMenu from '../components/TopMenu.vue'
 import BottomMenu from '../components/BottomMenu.vue'
-import SetMenu from '../components/SetMenu.vue'// 이거 출력은 되는데 왜 빨간줄뜨냐 함 물어봐야함ㅠ
+import SetMenu from '../components/SetMenu.vue'
 
 export default {  
     name: 'SET',
