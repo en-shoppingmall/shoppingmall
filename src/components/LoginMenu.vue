@@ -62,19 +62,19 @@ export default {
     async login() { // 로그인 함수 
         return (
         await axios({
-          url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
+          url:  "http://13.209.68.70:3000/customer/login", //가상서버 주소
           method: "post", // post 명령어 
-          data: {"id" : this.loginid, "pw": this.loginpw}
+          data: {"param":[this.loginid, this.loginpw]}
 
         }).then((res) => { // 데이터 준 다음 받은 응답
-            console.log(res.status)
-            alert("로그인에 성공했습니다.")
-            if(res.status == 200){
+            console.log(res.data)
+            if(res.data == "OK"){
+                alert("로그인에 성공했습니다.")
                 this.$router.push({name: 'main'})
             }
-        })
-        .catch((e) => {
-          alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
+            else{
+                alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
+            }
         })
       )
     }
