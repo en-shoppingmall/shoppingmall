@@ -131,6 +131,9 @@ p:nth-child(7) {
   margin:9% auto;
   display: block;
 }
+.btn:hover {
+    text-decoration: none;
+}
 
 /* 일반회원가입 버튼 */
 .btnUsual {
@@ -201,6 +204,7 @@ p:nth-child(7) {
   text-decoration: none;
 }
 .kakao-button {
+    background-image: url("../assets/kakaotalk.png");
     background-position-x: 5%;
     background-position-y: 45%;
     background-size: 6%;

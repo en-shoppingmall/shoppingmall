@@ -27,7 +27,7 @@
 
 <script>
 import axios from 'axios'
-export default {   
+export default {
     data(){
     return{
         productlist :[]
@@ -39,7 +39,7 @@ export default {
   mounted() { 
         this.productlist = axios({
           method: "get",
-          url: "http://13.209.68.70:3000/product/set",
+          url: "http://ec2-13-209-68-70.ap-northeast-2.compute.amazonaws.com:3000/product/set",
           data: {}
         }).then(res => {
         console.log(res.data)
@@ -47,6 +47,7 @@ export default {
         
         }).catch((e) => {
           console.log(e);
+          console.log(e.response);
         })
         .data
     }

@@ -3,12 +3,6 @@
     <div>
         <div class="top">
         <p id="mainText">JOIN US</p>
-        <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=G8P8fqkI9rzaUFIx89Cf&scope=login+userinfo&state=033725bb7064108d2392688aca6d208904d4a12bf749e940e6d2ce419cb2a030250e99243a2fc1fd8a027b5aba52c6eb86ec50f912b6b7b19a4c7c946d0560affcac1f938cddddaf834dd2ccc4bb0c1de6a79130d5481b64ad4da6b2328d860ee8691f552ebf3d6e9acb51ebf2356965ac3c96f86102a0b5bafd36cfa4d276a2&redirect_uri=https%3A%2F%2Fepimint.com%2FApi%2FMember%2FOauth2ClientCallback%2Fnaver%2F" class="btn naver">
-        네이버 로그인
-        </a>
-        <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=856446208302455&kid_directed_site=0&app_id=856446208302455&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Foauth%3Fresponse_type%3Dcode%26client_id%3D856446208302455%26scope%3Dpublic_profile%252C%2Bemail%26state%3D365e81a96d7e175cccc4b00dc55729991f385ddb5b12bf27091ece11dc5bd89dafe0914dfb20b1a51c2df96a1e19e5ac8b568bce0f826a1b4d9d830ab0528ed817d552c37857993452fb3cded6f8861de60a294dd8ca0ac9efc8455605773ecbb3b6535c62123f203343440dcea774d6754f51cb96cf91ecbd5ab39e477def6c%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Ffacebook%252F%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3Dbac324a1-7d34-4cb6-9be4-c2dd28d20aa6%26tp%3Dunspecified&cancel_url=https%3A%2F%2Fepimint.com%2FApi%2FMember%2FOauth2ClientCallback%2Ffacebook%2F%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3D365e81a96d7e175cccc4b00dc55729991f385ddb5b12bf27091ece11dc5bd89dafe0914dfb20b1a51c2df96a1e19e5ac8b568bce0f826a1b4d9d830ab0528ed817d552c37857993452fb3cded6f8861de60a294dd8ca0ac9efc8455605773ecbb3b6535c62123f203343440dcea774d6754f51cb96cf91ecbd5ab39e477def6c%23_%3D_&display=page&locale=ko_KR&pl_dbl=0" class="btn facebook">
-        페이스북 로그인
-        </a>
         <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fis_popup%3Dfalse%26ka%3Dsdk%252F1.42.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FMacIntel%2520origin%252Fhttps%25253A%25252F%25252Fepimint.com%26auth_tran_id%3Dmoahl6uvkpjf73419b2103fed20961340e22f4d0e46l4b54jsd%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fepimint.com%252FApi%252FMember%252FOauth2ClientCallback%252Fkakao%252F%26client_id%3Df73419b2103fed20961340e22f4d0e46&talk_login=hidden" class="btn kakao">
         카카오 로그인
         </a>
@@ -185,18 +179,18 @@
         </table>
     </div>
 
-    <input type="button" @click="[checkText(), checkDataTwice(), submit()]" class="btn completion" value="회원가입">
+    <input type="button" id = "login-button" @click="[checkText(), checkDataTwice(), submit()]" class="btn completion" value="회원가입" >
     </div>
 </body>
 </template>
 
 
 <script>
+import axios from 'axios'
 var emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 var idPattern = /^[a-z]{1}[a-z0-9]{3,15}$/;
 
 export default {
-    name: 'SignUpDetail',
   data: function(){
       return {
 
@@ -433,27 +427,32 @@ export default {
            }
        },
        async submit() { // 회원가입 제출
-        if(this.man == "") this.gender = this.woman
-        else if(this.woman =="") this.gender = this.man
+        if(this.man == "") this.gender = this.woman;
+        else if(this.woman =="") this.gender = this.man;
         return (
         await axios({
-          url:  "http://13.209.68.70:3000/customer.signUp/insert", //가상서버 주소
+          url:  "http://13.209.68.70:3000/customer/signUp/insert", //가상서버 주소
           method: "post", // post 명령어 
-          data: {"ID" : this.inputId, "PW": this.password,"NAME": this.name,"PHONE": this.firstHomeNumber+this.middleHomeNumber+this.lastHomeNumber,
-                "CELLPHON": this.firshPhoneNumber+this.middlePhoneNumber+this.endPhoneNumber, "EMAIL": this.email,"ADRESS_NUM": this.postcode,
-                "ADRESS": this.address,"ADRESS_DETAIL": this.addressdetail,"GENDER": this.gender, "BIRTH": this.year+this.month+this.day}
+          data: {"param":{"ID" : this.inputId, "PW": this.password,"NAME": this.name,"PHONE": this.firstHomeNumber+this.middleHomeNumber+this.lastHomeNumber,
+                "CELLPHONE": this.firshPhoneNumber+this.middlePhoneNumber+this.endPhoneNumber, "EMAIL": this.email,"ADRESS_NUM": this.postcode,
+                "ADRESS": this.address,"ADRESS_DETAIL": this.addressdetail,"GENDER": this.gender, "BIRTH": this.year+this.month+this.day}}
 
         }).then((res) => { // 데이터 준 다음 받은 응답
-            console.log(res.status)
-            alert("회원가입에 성공했습니다.")
-            if(res.status == 200){
-                this.$router.push({name: 'loginafter'})
-            }
+        console.log({"param":{"ID" : this.inputId, "PW": this.password,"NAME": this.name,"PHONE": this.firstHomeNumber+this.middleHomeNumber+this.lastHomeNumber,
+                "CELLPHONE": this.firshPhoneNumber+this.middlePhoneNumber+this.endPhoneNumber, "EMAIL": this.email,"ADRESS_NUM": this.postcode,
+                "ADRESS": this.address,"ADRESS_DETAIL": this.addressdetail,"GENDER": this.gender, "BIRTH": this.year+this.month+this.day}});
+        if(res == "OK") {
+             alert("회원가입에 성공했습니다.");
+        }
+        else {
+            alert("회원가입에 실패했습니다. 다시 시도해주세요!");
+        }
         })
         .catch((e) => {
+            console.log(e);
           alert("로그인에 실패했습니다. 계정 정보를 확인해주세요.");
         })
-      )
+      );
     }
   }
 }

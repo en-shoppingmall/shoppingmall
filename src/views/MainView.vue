@@ -6,7 +6,7 @@
  
   <div> <!-- 이 div는 중앙화면 Div임 그니까 밑에 footer를 중앙화면 div만들고 안에 넣으면 됨-->
     <main-background></main-background>
-    <bottom-menu></bottom-menu><!-- 이게 밑에 CONTACT 안내 문구 -->
+    <bottom-menu></bottom-menu><!-- 이게 밑에 CONTACT 안내 문구임 -->
   </div>
 </div>
 </template>
@@ -27,6 +27,9 @@ export default {
     },
 }
 </script>
+
+
+
 
 <style>
 

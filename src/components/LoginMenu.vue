@@ -30,7 +30,7 @@
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
                 <button type = "button" id = "login-button" @click = "login">기존 회원 로그인</button>
-            <div id = "search-join">
+           <div id = "search-join">
                 <router-link to="/serachpage" class = "idsearch">계정찾기</router-link>
                 <router-view />
                 <router-link to="/signup" id = "join">가입하기</router-link>
@@ -70,7 +70,7 @@ export default {
             console.log(res.status)
             alert("로그인에 성공했습니다.")
             if(res.status == 200){
-                this.$router.push({name: 'loginafter'})
+                this.$router.push({name: 'main'})
             }
         })
         .catch((e) => {
@@ -174,9 +174,6 @@ input{
 #search-join{ /* 아이디 비밀번호 찾기, 회원가입 링크묶은 것*/
     margin-top : 20px;
     text-align : left;
-    text-decoration : none;
-    color : black;
-    font-size : 13px;
 }
 #join{/* 회원가입 링크*/
     float: right;
@@ -214,8 +211,5 @@ a{
     text-decoration : none;
     color : black;
     font-size : 13px;
-}
-.idsearch{
-    text-align:left;
 }
 </style>
