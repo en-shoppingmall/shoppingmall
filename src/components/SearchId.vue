@@ -35,7 +35,8 @@
 
 
 <script>
-export default {   
+import axios from 'axios'
+export default { 
         data(){
         return{
             nameMessage : '',
@@ -46,7 +47,7 @@ export default {
             optionName:"이름",
             id:'',
             email:'',
-            searchNameOrId:''
+            searchNameOrId:''   
         }
         },
         methods:{    
@@ -69,11 +70,11 @@ export default {
         async searchInformation() { // 로그인 함수 
         return (
         await axios({
-          url:  "https://95efaac5-e1c6-43d1-b04a-e97f801c4e7e.mock.pstmn.io/test", //가상서버 주소
+          url:  "http://13.209.68.70:3000/customer/find/ID", //가상서버 주소
           method: "post", // post 명령어 
-          data: {"id" : this.id, "pw": this.email, "information" : this.searchNameOrId}
+          data: {"param": [this.id, this.email]}
         }).then((res) => { // 데이터 준 다음 받은 응답
-            alert("아이디 : " + res.id)
+            alert(JSON.stringify(res.data))
         })
         .catch((e) => {
           alert("일치하는 계정이 없습니다.");

@@ -438,10 +438,7 @@ export default {
                 "ADRESS": this.address,"ADRESS_DETAIL": this.addressdetail,"GENDER": this.gender, "BIRTH": this.year+this.month+this.day}}
 
         }).then((res) => { // 데이터 준 다음 받은 응답
-        console.log({"param":{"ID" : this.inputId, "PW": this.password,"NAME": this.name,"PHONE": this.firstHomeNumber+this.middleHomeNumber+this.lastHomeNumber,
-                "CELLPHONE": this.firshPhoneNumber+this.middlePhoneNumber+this.endPhoneNumber, "EMAIL": this.email,"ADRESS_NUM": this.postcode,
-                "ADRESS": this.address,"ADRESS_DETAIL": this.addressdetail,"GENDER": this.gender, "BIRTH": this.year+this.month+this.day}});
-        if(res == "OK") {
+        if(res.data == "OK") {
              alert("회원가입에 성공했습니다.");
         }
         else {

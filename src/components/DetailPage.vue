@@ -1,7 +1,9 @@
 <template>
 <body>
 <div class="row position">
-    <div class="left">
+    <div class="left" v-for="(products, index) in imageList" :key ="index">
+        <img :src="products.image">
+        <img :src="products.gif" >
         <img src="https://epimint.com/web/upload/NNEditor/20210817/copy-1629200984-scooping_gif2Blogo.gif">
         <img src="https://epimint.com/web/upload/NNEditor/20210824/%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80-(%ED%95%98%EB%8B%A8)-%EC%A0%80%EC%9A%A9%EB%9F%89_shop1_143603.gif">
         <img src="https://epimint.com/web/upload/NNEditor/20210824/3_%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80(%EA%B3%B5%ED%86%B5)_pc_shop1_143622.jpg">
@@ -10,15 +12,15 @@
         <img src="https://epimint.com/web/upload/NNEditor/20210824/%EC%B5%9C%ED%95%98%EB%8B%A8_%EA%B3%A0%EA%B0%9D%EC%84%BC%ED%84%B0_shop1_143745.jpg">
     </div>
     <aside class="right">
-        <div class="form korean-text">
-            <span class="title-text">{{set_name}}</span><br><br>
-            <span id="price">{{price}}원</span><br>
-            <span id="saleprice">{{saled_price}}원</span><br><br>
+        <div class="form korean-text" v-for="(product, index) in productlist.slice(0,1)" :key ="index">
+            <span class="title-text">{{product.set_name}}</span><br><br>
+            <span id="productPrice">{{product.price}}원</span><br>
+            <span id="saleprice">{{product.saled_price}}원</span><br><br>
             <span class="small-text">필수1</span><br>
             <select class="form-design small-text" @change="changeSelectBox"> 
                 <option selected disabled >- [필수] 옵션을 선택해 주세요 -</option>
                             <option value="1" disabled>--------------------</option>
-                            <option id="value" value="2">01 민트 초코칩</option>
+                            <option id="value" value="2">{{product_name}}</option>
             </select><br>
             <span class="small-text">선택1</span><br>
             <select class="form-design small-text" @change="showList($event)">
@@ -56,11 +58,10 @@ export default {
     data(){
         
     return{
-        
+        imageList :[],
         productlist :[],
 
         list:['01 민트 초코칩', '02 민트 초코쿠키', '03 민트 더블초코', '04 민트 초코팝핑', '05 민트 레인보우멜츠'],
-        set_name: "01 민트 초코칩 (2개 Set)",
         product_name: "01 민트 초코칩",
         price: "19,900",
         saled_price: "18,900",
@@ -139,7 +140,20 @@ export default {
 
     },
    mounted() { 
-        this.productlist = axios({
+        this.imageList = axios({
+          method: "post",
+          url: "http://13.209.68.70:3000/product/flavor/Detail",
+          data: {"param": "01 민트 초코칩"}
+        }).then(res =>  {
+        console.log(res.data)
+        this.imageList = res.data
+        
+        }).catch((e) => {
+          console.log(e);
+        })
+        .data,
+
+         this.productlist = axios({
           method: "get",
           url: "http://13.209.68.70:3000/product/flavor",
           data: {}
@@ -252,7 +266,7 @@ export default {
   color:#000000;
 }
 
-#price {
+#productPrice {
     color:#9c9c9c;
     text-decoration:line-through;
     font-family: 'Poppins', sans-serif;

@@ -21,7 +21,7 @@
           <router-view/>
         </li>
         <li>
-          <router-link to="/detailPage">REVIEW</router-link>   <!--이벤트 페이지 링크 --> 
+          <router-link to="/detailPage"></router-link>   <!--이벤트 페이지 링크 --> 
           <router-view/>
         </li>
       </ul>

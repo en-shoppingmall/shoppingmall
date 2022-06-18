@@ -50,6 +50,7 @@ const routes = [
   {
     path:'/detailPage',
     name:'detailPage',
+    component: 'information',
     component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
   }
 ]
