@@ -23,6 +23,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/FlavorView.vue')
   },
   {
+    path :'/detailPage',
+    name :'detailPage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
+  },
+  {
     path : '/login',
     name : 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
@@ -38,14 +43,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/SignupDetailView.vue')
   },
   {
-    path : '/loginafter',
-    name : 'loginafter',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginAfterView.vue')
+    path : '/serachpage',
+    name : 'serachpage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SearchIdView.vue')
   },
   {
-    path : '/purchasepage',
-    name : 'purchasepage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PurchaseView.vue')
+    path:'/detailPage',
+    name:'detailPage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
   }
 ]
 

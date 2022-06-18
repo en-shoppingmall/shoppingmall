@@ -30,10 +30,11 @@
                 <!-- v-model은 양방향으로 입력값 교환 가능?, placeholder는 입력하면 써져있는 값 지워짐-->
             </div>
                 <button type = "button" id = "login-button" @click = "login">기존 회원 로그인</button>
-            <div id = "search-join">
-                <a href = "https://epimint.com/index.html">아이디 찾기 | </a>
-                <a href = "https://epimint.com/index.html">비밀번호 찾기</a>
-                <a href = "https://epimint.com/index.html" id = "join">가입하기</a>
+           <div id = "search-join">
+                <router-link to="/serachpage" class = "idsearch">계정찾기</router-link>
+                <router-view />
+                <router-link to="/signup" id = "join">가입하기</router-link>
+                <router-view />
             </div>
             <hr width = "100%" color = "black; width = 1px;"> <!-- 중간에 회색 실선 -->
         </div>    
@@ -69,7 +70,7 @@ export default {
             console.log(res.status)
             alert("로그인에 성공했습니다.")
             if(res.status == 200){
-                this.$router.push({name: 'loginafter'})
+                this.$router.push({name: 'main'})
             }
         })
         .catch((e) => {

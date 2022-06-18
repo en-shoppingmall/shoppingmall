@@ -113,6 +113,7 @@ export default {
  
       }
   }
+
 }
 </script>
 
@@ -120,18 +121,23 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 body {
     margin:0;
 }
+
+
 #mainEnglishSign {
     position: relative;
     top: 21%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 45px;
     z-index: 10;
     font-weight: bolder;
 }
+
 #mainKoreanSign {
     position: relative;
     top: 25%;
@@ -140,115 +146,138 @@ body {
     font-size: 21px;
     z-index: 10;
 }
+
 #menuEnglishSign {
     position: relative;
     z-index: 0;
     top: 34%;
     left: -23.5%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuKoreanSign {
     position: relative;
     z-index: 0;
     top: 32.5%;
     left: -30%;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuEnglishSignCookie {
     position: relative;
     z-index: 0;
     top: 34%;
     left: -22%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuKoreanSignCookie {
     position: relative;
     z-index: 0;
     top: 32.5%;
     left: -28.7%;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuEnglishSignDoubleChoco {
     position: relative;
     z-index: 0;
     top: 34%;
     left: -22%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuKoreanSignDoubleChoco {
     position: relative;
     z-index: 0;
     top: 32.5%;
     left: -28.7%;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuEnglishSignPopping {
     position: relative;
     z-index: 0;
     top: 34%;
     left: -20.8%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuKoreanSignPopping {
     position: relative;
     z-index: 0;
     top: 32.5%;
     left: -28.7%;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuEnglishSignRainbow {
     position: relative;
     z-index: 0;
     top: 34%;
     left: -21.5%;
+
     font-family: 'Poppins', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuKoreanSignRainbow {
     position: relative;
     z-index: 0;
     top: 32.5%;
     left: -25.35%;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 52px;
     font-weight: bold;
 }
+
 #menuMessage {
     position: relative;
     top: 37%;
     left: 11%;
     text-align:left;
+
     font-family: 'Noto Sans KR', sans-serif;
     color: #333;
     font-size: 135%;
 }
+
 section {
 	box-sizing: border-box;
 	position: relative;
@@ -257,6 +286,7 @@ section {
     background-position: center center;
     background-size: cover;
 }
+
 #allIcecream {
     position: relative;
     z-index: 1;
@@ -266,6 +296,7 @@ section {
     object-fit: cover;
     
 }
+
 #icecream {
     position: relative;
     top: -19%;
@@ -274,16 +305,20 @@ section {
     height: 79%;
     object-fit: cover;
 }
+
+
 #tagMessage {
     font-family:"Noto Sans KR", sans-serif;
     font-size:60%;
     font-weight:bold;
     color:white;
+
     padding: 0.3% 0.9%;
     border: 1% solid;
     border-radius: 8px;
     background-color:#333;
 }
+
 #sign {
     position: relative;
     top: 12.8%;
@@ -292,6 +327,7 @@ section {
     height: 1.5%;
     object-fit: cover;
 }
+
 #shop {
 position: relative;
     top: 18.6em;
@@ -301,14 +337,18 @@ position: relative;
       color:black;
     text-decoration: none; /* 밑줄이 사라져야하는데 왜 안사라지는지 모르겠음 이거 적용했는데 봐봐 */
 }
+
 a {
     color:black;
     text-decoration: none; /* 밑줄이 사라져야하는데 왜 안사라지는지 모르겠음 이거 적용했는데 봐봐 */
 }
+
 li:hover {
     font-weight: bold;
     text-decoration: none;
 }
+
+
 section:first-child {
     font-family:'Noto Sans KR', sans-serif;
     text-align: center;
@@ -329,4 +369,6 @@ section:nth-child(5) {
 section:nth-child(6) {
     background: linear-gradient(#d2aada 50.4%, #ffffff 50%); /* 색 비율 조절 */
 }
+
+
 </style>
