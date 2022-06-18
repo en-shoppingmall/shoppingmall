@@ -7,7 +7,7 @@
         <transition appear name = "fade">
         <div class="row"><!-- 이미지 출력관련 클래스 -->
             <div class="col-md-3 col-lg4" v-for="(product, index) in productlist" :key = "index">
-                <router-link to="detailPage">
+            <router-link to="detailPage">
             <img :src="product.image" class="img-fluid">
             <div id = "name">{{product.set_name}}</div> <!-- 상품명 -->
             <span id = "sale-price">{{product.price}}</span><!-- 세일가격 -->
